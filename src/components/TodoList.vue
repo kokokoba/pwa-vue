@@ -1,29 +1,26 @@
 <template>
-  <div class="test">
-    <create-todo @new-todo="newTodo"></create-todo>
+  <div class="todoList">
     <p>完了: <strong>{{ todoList.filter(todo => {return todo.done === true}).length }}</strong></p>
     <p>未完: <strong>{{ todoList.filter(todo => {return todo.done === false}).length }}</strong></p>
-    <todo-list :todoList="todoList"></todo-list>
-    <div>
-      <section class="section cards">
-        <div class="container">
-          <div class="columns is-multiline">
-            <todo class="column is-4" @complete-todo="completeTodo" @delete-todo="deleteTodo"
-                  v-for="todo in todoList" :todo="todo"></todo>
-          </div>
+    <create-todo @new-todo="newTodo"></create-todo>
+    <section class="section cards">
+      <div class="container">
+        <div class="columns is-multiline">
+          <todo class="column is-4" @complete-todo="completeTodo" @delete-todo="deleteTodo"
+                v-for="todo in todoList" :todo="todo"></todo>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-  import TodoList from './TodoList'
+  import Todo from './Todo'
   import CreateTodo from './CreateTodo'
   export default {
-    name: 'Test',
+    name: 'TodoList',
     components: {
-      TodoList,
+      Todo,
       CreateTodo
     },
     data () {
@@ -46,6 +43,14 @@
     methods: {
       newTodo (newTodo) {
         this.todoList.push(newTodo)
+      },
+      deleteTodo (todo) {
+        const todoIndex = this.todoList.indexOf(todo);
+        this.todoList.splice(todoIndex, 1)
+      },
+      completeTodo (todo) {
+        const todoIndex = this.todoList.indexOf(todo);
+        this.todoList[todoIndex].done = true
       }
     }
   }
