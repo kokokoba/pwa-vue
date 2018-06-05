@@ -1,5 +1,5 @@
 <template>
-  <div class="content is-centered">
+  <div class="content is-centered mt-md">
     <a class="button is-outlined is-small" @click="openForm" v-show="!isCreating">追加</a>
     <div class="new-form box form-middle" v-show="isCreating">
       <div class="field">
@@ -60,5 +60,8 @@
   .form-middle {
     width: 340px;
     margin: 0 auto;
+  }
+  .mt-md {
+    margin-top: 15px;
   }
 </style>

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
-import Test from '@/components/Test'
+import TodoList from '@/components/TodoList'
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -31,9 +31,9 @@ let router = new Router({
       component: Login
     },
     {
-      path: '/test',
-      name: 'Test',
-      component: Test
+      path: '/todoList',
+      name: 'TodoList',
+      component: TodoList
     }
   ]
 })

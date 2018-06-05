@@ -30,7 +30,7 @@
         firebase.auth().signInWithEmailAndPassword(this.username, this.password).then(
           user => {
             alert('ログインしました')
-            this.$router.push('/test')
+            this.$router.push('/todoList')
           },
           err => {
             switch (err.code) {
